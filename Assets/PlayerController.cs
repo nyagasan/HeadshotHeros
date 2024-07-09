@@ -4,6 +4,8 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float rotationSpeed = 700f;
+    public GameObject bulletPrefab;
+    public Transform bulletSpawn;
 
     void Update()
     {
@@ -32,5 +34,7 @@ public class PlayerController : MonoBehaviour
     {
         // 弾を発射する処理をここに追加
         Debug.Log("Shoot!");
+        GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 10f;
     }
 }
