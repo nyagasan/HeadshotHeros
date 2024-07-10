@@ -941,7 +941,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1412,6 +1412,7 @@ GameObject:
   - component: {fileID: 1310447893}
   - component: {fileID: 1310447892}
   - component: {fileID: 1310447891}
+  - component: {fileID: 1310447894}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1493,6 +1494,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1310447894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310447890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 876f00dc49bc945509b17101f2d363ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1708258556}
+  offset: {x: 0, y: 1.33, z: -8.33}
+  smoothSpeed: 0.125
 --- !u!1 &1402450414 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1578558564194034, guid: 50d56e9319acd7440a97582160b01520, type: 3}
@@ -1674,7 +1690,7 @@ GameObject:
   - component: {fileID: 1641849225}
   m_Layer: 0
   m_Name: EnemySpawner
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1710,6 +1726,7 @@ MonoBehaviour:
   spawnRate: 0.1
   spawnRangeX: 5
   spawnPosZ: 100
+  spawnPosY: -2.2397
   playerTransform: {fileID: 1708258556}
 --- !u!1 &1688980407
 GameObject:
@@ -1817,6 +1834,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1578558564194034, guid: 50d56e9319acd7440a97582160b01520, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 4416351815745354, guid: 50d56e9319acd7440a97582160b01520, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1880,6 +1901,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1578558564194034, guid: 50d56e9319acd7440a97582160b01520, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1708258557}
+    - targetCorrespondingSourceObject: {fileID: 1578558564194034, guid: 50d56e9319acd7440a97582160b01520, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1708258559}
   m_SourcePrefab: {fileID: 100100000, guid: 50d56e9319acd7440a97582160b01520, type: 3}
 --- !u!4 &1708258556 stripped
 Transform:
@@ -1899,7 +1923,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 15
-  bulletPrefab: {fileID: 7299372955832372223, guid: 9b6ba4a273ed24f02acb516da8842e0a, type: 3}
+  bulletPrefab: {fileID: 3670418220864880946, guid: ea4de5149b85c4f209131d91fb5daaf5, type: 3}
   bulletSpawn: {fileID: 1953991521}
   score: 0
   hp: 5
@@ -1908,6 +1932,27 @@ MonoBehaviour:
   moneyText: {fileID: 158534919}
   lifeText: {fileID: 192078530}
   timeText: {fileID: 1138159444}
+--- !u!65 &1708258559
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402450414}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 6.9, y: 2.17, z: 8.63}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1755695548
 GameObject:
   m_ObjectHideFlags: 0
