@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed = 700f;
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
+    public int score = 0;
+    private float bulletStrength = 1f;
 
     void Update()
     {
@@ -30,11 +32,24 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // 弾を発射するメソッド
     void Shoot()
     {
         // 弾を発射する処理をここに追加
         Debug.Log("Shoot!");
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
         bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 10f;
+    }
+    
+    public void UpgradeBullet()
+    {
+        bulletStrength *= 1.5f; // 弾の強化（例: 1.5倍）
+        Debug.Log("Bullet Upgraded! Strength: " + bulletStrength);
+    }
+
+    public void AddScore(int points)
+    {
+        score += points; // スコア加算
+        Debug.Log("Score: " + score);
     }
 }
