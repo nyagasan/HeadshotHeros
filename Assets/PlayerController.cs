@@ -12,18 +12,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // 移動処理
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        // 移動処理（入力の符号を反転）
+        float moveHorizontal = -Input.GetAxis("Horizontal");
+        float moveVertical = -Input.GetAxis("Vertical");
 
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
         transform.Translate(movement * moveSpeed * Time.deltaTime, Space.World);
-
-        // 回転処理（オプション）
-        if (movement != Vector3.zero)
-        {
-            Quaternion toRotation = Quaternion.LookRotation(movement, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
-        }
 
         // 弾の発射（スペースキー）
         if (Input.GetKeyDown(KeyCode.Space))
@@ -35,10 +29,10 @@ public class PlayerController : MonoBehaviour
     // 弾を発射するメソッド
     void Shoot()
     {
-        // 弾を発射する処理をここに追加
-        Debug.Log("Shoot!");
+        // 弾を発射する処理
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
-        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 10f;
+        bullet.GetComponent<Rigidbody>().velocity = transform.right * 10f * bulletStrength; // X軸正方向に発射
+        Debug.Log("Shoot!");
     }
     
     public void UpgradeBullet()
