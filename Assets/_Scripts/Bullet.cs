@@ -2,20 +2,21 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float lifeTime = 5f; // 弾の寿命（秒）
+    public int damage = 20; // 弾のダメージ量
 
-    void Start()
+    void OnTriggerEnter(Collider other)
     {
-        // 一定時間後に弾を破棄する
-        Destroy(gameObject, lifeTime);
-    }
-
-    void Update()
-    {
-        // グローバルY座標が一定位置を下回ったら弾を破棄する
-        if (transform.position.y < -10f) // 例えばY座標が-10を下回ったら破棄
+        if (other.CompareTag("Enemy"))
         {
-            Destroy(gameObject);
+            if (other.TryGetComponent(out VisionBoss visionBoss))
+            {
+                visionBoss.TakeDamage(damage);
+            }
+            else if (other.TryGetComponent(out Quest3 quest3))
+            {
+                quest3.TakeDamage(damage);
+            }
+            Destroy(gameObject); // 弾を破壊
         }
     }
 }
