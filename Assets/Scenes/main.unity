@@ -1715,7 +1715,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1578558564194034, guid: 50d56e9319acd7440a97582160b01520, type: 3}
       propertyPath: m_Name
-      value: Example1_Grey
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4416351815745354, guid: 50d56e9319acd7440a97582160b01520, type: 3}
       propertyPath: m_RootOrder
