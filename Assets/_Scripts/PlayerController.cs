@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
 
     private float currentTime;
 
+    public static int RootScore;
+
     void Start()
     {
         currentTime = gameTime;
@@ -91,13 +93,16 @@ public class PlayerController : MonoBehaviour
     {
         // ゲームオーバー時の処理
         Debug.Log("Game Over");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // シーンを再読み込みする
+        SceneManager.LoadScene("GameOver"); 
     }
 
     void GameClear()
     {
         // ゲームクリア時の処理
+        RootScore = score;
         Debug.Log("Game Clear");
+        SceneManager.LoadScene("Result"); 
+        
         // お金を貯蓄する処理（必要に応じて実装）
     }
 
@@ -106,15 +111,15 @@ public class PlayerController : MonoBehaviour
         // UIを更新する
         if (moneyText != null)
         {
-            moneyText.text = "Score: " + score;
+            moneyText.text = "" + score;
         }
         if (lifeText != null)
         {
-            lifeText.text = "HP: " + hp;
+            lifeText.text = "" + hp;
         }
         if (timeText != null)
         {
-            timeText.text = "Time: " + Mathf.Ceil(currentTime);
+            timeText.text = "" + Mathf.Ceil(currentTime);
         }
     }
 }

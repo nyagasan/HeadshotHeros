@@ -1928,7 +1928,7 @@ MonoBehaviour:
   score: 0
   hp: 5
   bulletStrength: 1
-  gameTime: 60
+  gameTime: 15
   moneyText: {fileID: 158534919}
   lifeText: {fileID: 192078530}
   timeText: {fileID: 1138159444}
